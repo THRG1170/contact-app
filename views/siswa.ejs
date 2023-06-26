@@ -1,0 +1,49 @@
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<a href="/siswa/add" class="button is-success">Add data</a>
+
+<% if (msg.length !== 0) { %>
+<script>
+  swal("Good job!", "<%= msg %>", "success");
+</script>
+<% } %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Nama</th>
+      <th>Jurusan</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% siswas.forEach((siswa, i) => { i++%>
+    <tr>
+      <th><%= i %></th>
+      <td><%= siswa.nama %></td>
+      <td><%= siswa.jurusan %></td>
+      <td>
+        <a href="/siswa/<%= siswa.id %>" class="button is-primary is-small"
+          >Details</a
+        >
+        <a href="/siswa/edit/<%= siswa.id %>" class="button is-link is-small"
+          >Edit</a
+        >
+        <form
+          style="display: inline"
+          action="/siswa/<%= siswa.id %>?_method=DELETE"
+          method="post"
+        >
+          <button
+            type="submit"
+            onclick="return confirm('sure bout that?')"
+            class="button is-danger is-small"
+          >
+            Delete
+          </button>
+        </form>
+      </td>
+    </tr>
+    <%}); %>
+  </tbody>
+</table>

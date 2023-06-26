@@ -1,0 +1,49 @@
+<% if (siswa) { %>
+<div class="card" style="width: 50vh">
+  <header class="card-header" style="display: flex; align-items: center">
+    <p class="card-header-title">Siswa</p>
+    <a href="/siswa" class="button is-ghost">back</a>
+  </header>
+  <div class="card-content">
+    <div
+      class="content"
+      style="display: flex; flex-direction: column; align-items: center"
+    >
+      <p>Nama: <%= siswa.nama %></p>
+      <small style="display: flex; flex-direction: column; align-items: center">
+        <p>Kelas: <%= siswa.kelas %></p>
+        <p>jurusan: <%= siswa.jurusan %></p>
+      </small>
+    </div>
+  </div>
+  <div style="display: flex; justify-content: center; gap: 10px">
+    <a href="/siswa/edit/<%= siswa.nama %>" class="button is-link is-small">
+      Edit
+    </a>
+    <form
+      style="display: inline"
+      action="/siswa/<%= siswa.id %>?_method=DELETE"
+      method="post"
+    >
+      <button type="submit" class="button is-danger is-small">Delete</button>
+    </form>
+  </div>
+</div>
+<% } else { %>
+
+<div class="card" style="width: 50vh">
+  <header class="card-header" style="display: flex; align-items: center">
+    <p class="card-header-title">Siswa</p>
+    <a href="/siswa" class="button is-ghost">back</a>
+  </header>
+  <div class="card-content">
+    <div
+      class="content"
+      style="display: flex; flex-direction: column; align-items: center"
+    >
+      <p>Not Found</p>
+    </div>
+  </div>
+</div>
+
+<% } %>
